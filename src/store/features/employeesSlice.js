@@ -37,6 +37,7 @@ export const updateEmployee = createAsyncThunk(
   async (data, { dispatch }) => {
     db.employee.updateEmployee(data.id, data);
     dispatch(fetchAllEmployees());
+    toast("Employee record updated!");
   }
 );
 export const counterSlice = createSlice({
