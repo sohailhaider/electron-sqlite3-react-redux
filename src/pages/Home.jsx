@@ -14,7 +14,7 @@ const Home = () => {
       </Row>
       <Row>
         <Col>
-          <CreateUpdateEmployee editUser={editUser} />
+          <CreateUpdateEmployee editUser={editUser} setEditUser={setEditUser} />
         </Col>
       </Row>
       <Row>
