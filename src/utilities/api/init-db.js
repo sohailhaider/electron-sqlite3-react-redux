@@ -1,7 +1,7 @@
 const { getAll } = require("../query-helper");
 
 var sqlite3 = require("sqlite3").verbose();
-var db = new sqlite3.Database("employees.db", sqlite3.OPEN_READWRITE);
+var db = new sqlite3.Database("employees.db");
 
 const buildSchema = () => {
   db.serialize(function () {
