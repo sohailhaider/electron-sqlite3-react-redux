@@ -34,7 +34,6 @@ const CreateUpdateEmployee = ({ editUser, setEditUser }) => {
     }
   };
   useEffect(() => {
-    console.log("edituser updated", editUser);
     if (formikRef.current && editUser) {
       formikRef.current.setFieldValue("firstName", editUser.firstName);
       formikRef.current.setFieldValue("lastName", editUser.lastName);
