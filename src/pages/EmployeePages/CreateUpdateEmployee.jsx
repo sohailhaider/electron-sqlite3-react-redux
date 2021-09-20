@@ -6,6 +6,7 @@ import {
   createNewEmployee,
   updateEmployee,
 } from "../../store/features/employeesSlice";
+import EmployeeSchema from "./ValidationSchema";
 
 const CreateUpdateEmployee = ({ editUser, setEditUser }) => {
   const dispatch = useDispatch();
@@ -26,9 +27,10 @@ const CreateUpdateEmployee = ({ editUser, setEditUser }) => {
       formikRef.current.setFieldValue("lastName", _editUser.lastName);
       formikRef.current.setFieldValue("status", _editUser.status);
     } else {
-      formikRef.current.setFieldValue("firstName", "");
-      formikRef.current.setFieldValue("lastName", "");
-      formikRef.current.setFieldValue("status", 1);
+      formikRef.current.resetForm();
+      // formikRef.current.setFieldValue("firstName", "");
+      // formikRef.current.setFieldValue("lastName", "");
+      // formikRef.current.setFieldValue("status", 1);
     }
   };
   useEffect(() => {
@@ -43,6 +45,7 @@ const CreateUpdateEmployee = ({ editUser, setEditUser }) => {
     <div className="pb-4 text-center">
       <Formik
         innerRef={formikRef}
+        validationSchema={EmployeeSchema}
         initialValues={{ firstName: "", lastName: "", status: 1 }}
         onSubmit={(values, { setSubmitting }) => {
           createUpdateEmployeeRecord(values);
