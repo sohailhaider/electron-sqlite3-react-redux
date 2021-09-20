@@ -1,20 +1,25 @@
-const { app, BrowserWindow, ipcRenderer } = require("electron");
+const { app, BrowserWindow } = require("electron");
 const path = require("path");
+const db = require("./utilities/api/db-actions");
+require("@electron/remote/main").initialize();
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require("electron-squirrel-startup")) {
   // eslint-disable-line global-require
   app.quit();
 }
-
 const createWindow = () => {
   // Create the browser window.
+  // console.log("database is", db);
   const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 300,
+    height: 300,
     webPreferences: {
-      nodeIntegration: true,
       contextIsolation: false,
+      enableRemoteModule: true,
+      nodeIntegration: true,
+      nodeIntegrationInWorker: true,
+      webviewTag: true,
     },
   });
 
@@ -23,6 +28,8 @@ const createWindow = () => {
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
+  require("@electron/remote/main").enable(mainWindow.webContents);
+  global.db = db;
 };
 
 // This method will be called when Electron has finished

@@ -1,8 +1,9 @@
 import React from "react";
-import { runDb } from "../utilities/api/user";
-
+// import { runDb } from "../utilities/api/user";
+const remote = window.require('@electron/remote');
 const Home = () => {
-  runDb();
+  console.log("remote", remote.getGlobal("db"))
+  // remote.getGlobal("db").runDb();
   return <div>This is React Home</div>;
 };
 
