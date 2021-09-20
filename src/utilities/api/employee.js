@@ -16,4 +16,20 @@ const deleteEmployee = (id) => {
   db.run(`DELETE FROM employees WHERE id=?`, [id]);
 };
 
-module.exports = { getAllEmployees, createEmployee, deleteEmployee };
+const updateEmployee = (id, { firstName, lastName, status }) => {
+  db.run(
+    `UPDATE employees
+  SET firstName = ?,
+  lastName = ?,
+  status = ?
+  WHERE id = ?;`,
+    [firstName, lastName, status, id]
+  );
+};
+
+module.exports = {
+  getAllEmployees,
+  createEmployee,
+  deleteEmployee,
+  updateEmployee,
+};
