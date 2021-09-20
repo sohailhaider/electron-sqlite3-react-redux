@@ -12,8 +12,8 @@ const createWindow = () => {
   // Create the browser window.
   // console.log("database is", db);
   const mainWindow = new BrowserWindow({
-    width: 300,
-    height: 300,
+    width: 1000,
+    height: 800,
     webPreferences: {
       contextIsolation: false,
       enableRemoteModule: true,

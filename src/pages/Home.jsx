@@ -1,30 +1,29 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import {
-  createNewEmployee,
-  fetchAllEmployees,
-  deleteEmployee,
-  updateEmployee
-} from "../store/features/employeesSlice";
+import React, { useState } from "react";
+import { Col, Container, Row } from "react-bootstrap";
+import CreateUpdateEmployee from "./EmployeePages/CreateUpdateEmployee";
+import EmployeesListing from "./EmployeePages/EmployeesListing";
 
 const Home = () => {
-  const employees = useSelector((state) => state.employees.employees);
-  const dispatch = useDispatch();
-  console.log(employees);
-  useEffect(() => {
-    dispatch(fetchAllEmployees());
-    dispatch(
-      createNewEmployee({
-        firstName: "Sohail",
-        lastName: "Haider",
-        status: 1,
-      })
-    );
-    dispatch(deleteEmployee(1));
-    dispatch(updateEmployee({id: 3, firstName: "haider"}));
-
-  }, []);
-  return <div>This is React Home</div>;
+  const [editUser, setEditUser] = useState(null);
+  return (
+    <Container fluid style={{ margin: "0px" }}>
+      <Row>
+        <Col className="text-center mt-3 pb-3">
+          <h2>Employees Records</h2>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <CreateUpdateEmployee editUser={editUser} />
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <EmployeesListing setEditUser={setEditUser} />
+        </Col>
+      </Row>
+    </Container>
+  );
 };
 
 export default Home;

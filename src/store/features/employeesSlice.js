@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
 const remote = window.require("@electron/remote");
 const db = remote.getGlobal("db");
 
@@ -16,6 +17,7 @@ export const createNewEmployee = createAsyncThunk(
   async (data, { dispatch }) => {
     db.employee.createEmployee(data);
     dispatch(fetchAllEmployees());
+    toast("New record added successfully");
   }
 );
 
@@ -26,6 +28,7 @@ export const deleteEmployee = createAsyncThunk(
       console.log(err, results);
     });
     dispatch(fetchAllEmployees());
+    toast("Employee record deleted!");
   }
 );
 
