@@ -11,7 +11,7 @@ module.exports = {
     rules,
   },
   externals: {
-    sqlite3: "commonjs sqlite3",
+    // sqlite3: "commonjs sqlite3",
   },
   resolve: {
       extensions: [".ts", ".js", ".jsx"],
