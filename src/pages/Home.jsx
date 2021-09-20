@@ -1,8 +1,8 @@
 import React from "react";
-import { runDb } from "../utilities/api/user";
+// import { runDb } from "../utilities/api/user";
 
 const Home = () => {
-  runDb();
+  // runDb();
   return <div>This is React Home</div>;
 };
 

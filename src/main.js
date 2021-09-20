@@ -6,6 +6,12 @@ if (require("electron-squirrel-startup")) {
   // eslint-disable-line global-require
   app.quit();
 }
+var knex = require("knex")({
+	client: "sqlite3",
+	connection: {
+		filename: path.join(__dirname, 'database.sqlite')
+	}
+});
 
 const createWindow = () => {
   // Create the browser window.

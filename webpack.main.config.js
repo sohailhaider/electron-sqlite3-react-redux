@@ -9,7 +9,7 @@ module.exports = {
     rules: require("./webpack.rules"),
   },
   externals: {
-    sqlite3: "commonjs sqlite3",
+    sqlite3: "commonjs sqlite3 knex",
   },
   resolve: {
       extensions: [".ts", ".js", ".jsx"],
