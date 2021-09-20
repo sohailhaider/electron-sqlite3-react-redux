@@ -1,21 +1,29 @@
-import React from "react";
-const remote = window.require("@electron/remote");
-const db = remote.getGlobal("db");
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  createNewEmployee,
+  fetchAllEmployees,
+  deleteEmployee,
+  updateEmployee
+} from "../store/features/employeesSlice";
+
 const Home = () => {
-  db.employee.createEmployee({
-    firstName: "Sohail",
-    lastName: "Haider",
-    status: 1,
-  });
-  db.employee.getAllEmployees().then((value) => console.log(value));
-  db.employee.deleteEmployee(2);
-  db.employee.getAllEmployees().then((value) => console.log(value));
-  db.employee.updateEmployee(1, {
-    firstName: "first1",
-    lastName: "last2",
-    status: 0,
-  });
-  db.employee.getAllEmployees().then((value) => console.log(value));
+  const employees = useSelector((state) => state.employees.employees);
+  const dispatch = useDispatch();
+  console.log(employees);
+  useEffect(() => {
+    dispatch(fetchAllEmployees());
+    dispatch(
+      createNewEmployee({
+        firstName: "Sohail",
+        lastName: "Haider",
+        status: 1,
+      })
+    );
+    dispatch(deleteEmployee(1));
+    dispatch(updateEmployee({id: 3, firstName: "haider"}));
+
+  }, []);
   return <div>This is React Home</div>;
 };
 
