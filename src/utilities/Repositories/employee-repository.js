@@ -1,5 +1,5 @@
 const { getAll } = require("../query-helper");
-const db = require("./init-db");
+const db = require("../api/init-db");
 
 const getAllEmployees = () => {
   return getAll(db, "SELECT * from employees");
@@ -31,6 +31,16 @@ const updateEmployee = (id, { firstName, lastName, status }) => {
     [firstName, lastName, status, id]
   );
 };
+
+// class EmployeeRepository {
+//   constructor(dao) {
+//     this.db = dao;
+//     this.getAllEmployees = getAllEmployees;
+//     this.createEmployee = createEmployee;
+//     this.deleteEmployee = deleteEmployee;
+//     this.updateEmployee = updateEmployee;
+//   }
+// }
 
 module.exports = {
   getAllEmployees,
