@@ -1,4 +1,4 @@
-const { getAll, insertOne } = require("../query-helper");
+const { getAll } = require("../query-helper");
 const db = require("./init-db");
 
 const getAllEmployees = () => {

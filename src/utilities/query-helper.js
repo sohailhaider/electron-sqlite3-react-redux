@@ -6,16 +6,6 @@ const getAll = (db, query) => {
     });
   });
 };
-const getOne = (db, query) => {
-  return new Promise((resolve, reject) => {
-    db.select(query, function (err, rows) {
-      if (err) reject(err);
-      resolve(rows);
-    });
-  });
-};
-
 module.exports = {
-  getAll,
-  getOne
+  getAll
 };

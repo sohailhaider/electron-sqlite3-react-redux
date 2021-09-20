@@ -3,7 +3,7 @@ const { getAll } = require("../query-helper");
 var sqlite3 = require("sqlite3").verbose();
 var db = new sqlite3.Database(":memory:");
 
-const createTables = () => {
+const buildSchema = () => {
   db.serialize(function () {
     db.run(
       "create table if not exists employees (id INTEGER PRIMARY KEY AUTOINCREMENT, firstName TEXT, lastName Text, status int DEFAULT 1)"
@@ -30,6 +30,6 @@ const seedData = () => {
     }
   });
 };
-createTables();
+buildSchema();
 seedData();
 module.exports = db;
